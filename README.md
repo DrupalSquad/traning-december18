@@ -1,6 +1,6 @@
-## Docker training
+# Docker training
 
-####NGINX container
+### NGINX container
 
 Run a container:
 ```
@@ -42,12 +42,12 @@ Connect to a container:
 docker exec -it <ID_or_NAME> /bin/bash
 ```
 
-####NGINX help
+### NGINX help
 
 The NGINX image on the DockerHub: [Click](https://hub.docker.com/_/nginx/).
 
 A path to the  *nginx.conf*: `/etc/nginx/nginx.conf`.
 
-####Task
+### Task
 
 Deliver the *index.html* from this repo to a user via the NGINX container.
