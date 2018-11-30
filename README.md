@@ -1,6 +1,6 @@
 # Docker training
 
-### NGINX container
+### Basic commands
 
 Run a container:
 ```
