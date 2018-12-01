@@ -1,0 +1,5 @@
+FROM nginx:1.14.1
+
+COPY docker/nginx/nginx.conf /etc/nginx/
+
+WORKDIR /var/www

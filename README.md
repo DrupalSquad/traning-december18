@@ -1,10 +1,20 @@
 # Docker training
 
-### Basic commands
+### Commands for this step
 
-List of "daemon" containers:
+Build a local custom image with NGINX:
 ```
-docker ps
+docker build --file Dockerfile-nginx --tag my_nginx_image .
+```
+
+Run the PHP container:
+```
+docker run -d --volume $(pwd):/var/www --name php-fpm php:7.1.24-fpm
+```
+
+Run the NGINX container:
+```
+docker run -d -p 8080:80 --volume $(pwd):/var/www --volume "$PWD"/docker/nginx/conf.d:/etc/nginx/conf.d --link php-fpm --name web_server my_nginx_image
 ```
 
 ### Containers info
