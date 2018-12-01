@@ -2,19 +2,19 @@
 
 ### Commands for this step
 
-Build a local custom image with NGINX:
+Run an environment:
 ```
-docker build --file Dockerfile-nginx --tag my_nginx_image .
-```
-
-Run the PHP container:
-```
-docker run -d --volume $(pwd):/var/www -w /var/www --name php-fpm php:7.1.24-fpm
+docker-compose up -d --build
 ```
 
-Run the NGINX container:
+Restart containers:
 ```
-docker run -d -p 8080:80 --volume $(pwd):/var/www --volume "$PWD"/docker/nginx/conf.d:/etc/nginx/conf.d --link php-fpm --name web_server my_nginx_image
+docker-compose restart
+```
+
+Stop containers and remove images:
+```
+docker-compose down --rmi all
 ```
 
 ### Containers info
