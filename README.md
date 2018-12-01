@@ -9,7 +9,7 @@ docker build --file Dockerfile-nginx --tag my_nginx_image .
 
 Run the PHP container:
 ```
-docker run -d --volume $(pwd):/var/www --name php-fpm php:7.1.24-fpm
+docker run -d --volume $(pwd):/var/www -w /var/www --name php-fpm php:7.1.24-fpm
 ```
 
 Run the NGINX container:

@@ -1,5 +1,7 @@
 FROM nginx:1.14.1
 
+RUN apt-get update && apt-get install -y vim
+
 COPY docker/nginx/nginx.conf /etc/nginx/
 
 WORKDIR /var/www
