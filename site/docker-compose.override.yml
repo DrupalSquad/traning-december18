@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  mariadb:
+    volumes:
+      - shared_databases:/var/lib/mysql
+  php:
+    environment:
+      # https://wodby.com/docs/stacks/php/containers/#xdebug-local
+      PHP_XDEBUG: 1
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+    volumes:
+      - ./drupal:/var/www/html:cached
+
+  nginx:
+    volumes:
+      - ./drupal:/var/www/html:cached
+
+volumes:
+  shared_databases:
+    driver: local
