@@ -23,5 +23,6 @@
 * Set up the Drupal 8 via Composer
 * Configure the XDebug
 * Run any Drush command
+* Connect to a database and perform any query
 * Play around with the Mailhog: reset your password on a site
 * Play around with the Portainer: monitor a resource usage in a database container

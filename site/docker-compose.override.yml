@@ -2,6 +2,8 @@ version: "3"
 
 services:
   mariadb:
+    ports:
+      - "3306:3306"
     volumes:
       - shared_databases:/var/lib/mysql
   php:
