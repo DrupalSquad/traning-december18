@@ -50,4 +50,5 @@ A path to the  *nginx.conf*: `/etc/nginx/nginx.conf`.
 
 ### Task
 
-Deliver the *index.html* from this repo to a user via the NGINX container.
+* Install *vim* editor inside a container with NGINX
+* Deliver the *index.html* from this repo to a user via the NGINX container.
