@@ -15,11 +15,13 @@ services:
 #      PHP_IDE_CONFIG: serverName=MyServer
 #      PHP_XDEBUG_REMOTE_HOST: host.docker.internal # Docker 18.03+ & Linux/Mac/Win
     volumes:
-      - ./drupal:/var/www/html:cached
+      - ./:/var/www/html:cached
 
   nginx:
+    environment:
+      NGINX_SERVER_ROOT: /var/www/html/drupal/web
     volumes:
-      - ./drupal:/var/www/html:cached
+      - ./:/var/www/html:cached
 
 volumes:
   shared_databases:
