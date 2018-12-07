@@ -1,0 +1,14 @@
+uuid: 2529383c-8a74-4e26-9f31-8b8f8de38e31
+name: admin
+mail: admin@localhost
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
