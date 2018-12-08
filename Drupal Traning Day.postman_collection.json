@@ -1,0 +1,765 @@
+{
+	"info": {
+		"_postman_id": "03e975f9-de84-479e-9482-a2839bffa2b3",
+		"name": "Drupal Traning Day",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Node",
+			"item": [
+				{
+					"name": "Create node article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									"const drupal_host = pm.variables.get(\"drupal_host\");",
+									"",
+									"pm.sendRequest(drupal_host + \"/session/token\", function (err, response) {",
+									"    pm.globals.set(\"X-CSRF-Token\", response.text());",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{X-CSRF-Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"article\",\n  \"title\": {\n    \"value\": \"Example node title\"\n  },\n  \"body\": {\n  \t\"value\": \"Example node body\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{drupal_host}}/node?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								"node"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit node article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									"const drupal_host = pm.variables.get(\"drupal_host\");",
+									"",
+									"pm.sendRequest(drupal_host + \"/session/token\", function (err, response) {",
+									"    pm.globals.set(\"X-CSRF-Token\", response.text());",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "{{X-CSRF-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"article\",\n  \"title\": {\n    \"value\": \"New node title\"\n  },\n  \"body\": {\n  \t\"value\": \"New node body\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://drupal8.docker.local:8000/node/1?_format=json",
+							"protocol": "http",
+							"host": [
+								"drupal8",
+								"docker",
+								"local"
+							],
+							"port": "8000",
+							"path": [
+								"node",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									"const drupal_host = pm.variables.get(\"drupal_host\");",
+									"",
+									"pm.sendRequest(drupal_host + \"/session/token\", function (err, response) {",
+									"    pm.globals.set(\"X-CSRF-Token\", response.text());",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "{{X-CSRF-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://drupal8.docker.local:8000/node/1?_format=json",
+							"protocol": "http",
+							"host": [
+								"drupal8",
+								"docker",
+								"local"
+							],
+							"port": "8000",
+							"path": [
+								"node",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single node",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{drupal_host}}/node/1?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								"node",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Home Page",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{drupal_host}}/?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									"const drupal_host = pm.variables.get(\"drupal_host\");",
+									"",
+									"pm.sendRequest(drupal_host + \"/session/token\", function (err, response) {",
+									"    pm.globals.set(\"X-CSRF-Token\", response.text());",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "{{X-CSRF-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entity_id\": [\n  \t{\n\t\t\"target_id\": 2\n  \t}\n  ],\n  \"uid\": [\n  \t{\n\t\t\"target_id\": 1\n  \t}\n  ],\n  \"entity_type\": [\n  \t{\n  \t\t\"value\": \"node\"\n  \t}\n  ],\n  \"comment_type\": \"comment\",\n  \"field_name\": {\n  \t\"value\": \"comment\"\n  },\n  \"comment_body\": {\n  \t\"value\": \"Example comment\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{drupal_host}}/comment?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								"comment"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									"const drupal_host = pm.variables.get(\"drupal_host\");",
+									"",
+									"pm.sendRequest(drupal_host + \"/session/token\", function (err, response) {",
+									"    pm.globals.set(\"X-CSRF-Token\", response.text());",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "{{X-CSRF-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entity_id\": [\n  \t{\n\t\t\"target_id\": 2\n  \t}\n  ],\n  \"uid\": [\n  \t{\n\t\t\"target_id\": 1\n  \t}\n  ],\n  \"entity_type\": [\n  \t{\n  \t\t\"value\": \"node\"\n  \t}\n  ],\n  \"comment_type\": \"comment\",\n  \"field_name\": {\n  \t\"value\": \"comment\"\n  },\n  \"comment_body\": {\n  \t\"value\": \"New body\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{drupal_host}}/comment/7?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								"comment",
+								"7"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									"const drupal_host = pm.variables.get(\"drupal_host\");",
+									"",
+									"pm.sendRequest(drupal_host + \"/session/token\", function (err, response) {",
+									"    pm.globals.set(\"X-CSRF-Token\", response.text());",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "{{X-CSRF-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{drupal_host}}/comment/7?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								"comment",
+								"7"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "{{X-CSRF-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{drupal_host}}/comment/6?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								"comment",
+								"6"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get node comments",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31b74bbd-ffa2-4428-b130-ba370b41e06e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "{{X-CSRF-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{drupal_host}}/node/1/comments?_format=json",
+							"host": [
+								"{{drupal_host}}"
+							],
+							"path": [
+								"node",
+								"1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LogIn",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "60e316e4-4bd7-48ed-9ee4-9b8349184bb0",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"admin\",\n   \"pass\": \"admin\"\n}"
+				},
+				"url": {
+					"raw": "{{drupal_host}}/user/login?_format=json",
+					"host": [
+						"{{drupal_host}}"
+					],
+					"path": [
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "_format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LogOut",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "60e316e4-4bd7-48ed-9ee4-9b8349184bb0",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{drupal_host}}/user/logout?_format=json&token={{logout_token}}",
+					"host": [
+						"{{drupal_host}}"
+					],
+					"path": [
+						"user",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "_format",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{logout_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "60e316e4-4bd7-48ed-9ee4-9b8349184bb0",
+						"exec": [
+							"const drupal_host = pm.variables.get(\"drupal_host\");",
+							"",
+							"pm.sendRequest(drupal_host + \"/session/token\", function (err, response) {",
+							"    pm.globals.set(\"X-CSRF-Token\", response.text());",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-CSRF-Token",
+						"value": "{{X-CSRF-Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": {\n   \t\"value\": \"user3\"\n   },\n   \"mail\": {\n   \t\"value\": \"user3@example.com\"\n   },\n   \"pass\": {\n   \t\"value\": \"user3\"\n   }\n}"
+				},
+				"url": {
+					"raw": "{{drupal_host}}/user/register?_format=json",
+					"host": [
+						"{{drupal_host}}"
+					],
+					"path": [
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "_format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "86e5aea7-8f01-43fa-a4c8-249d72e04657",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d0c8a911-0908-4f6e-a765-2e25acf707e8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "a85e9e29-7523-4662-8fda-2419979f5a36",
+			"key": "drupal_host",
+			"value": "http://drupal8.docker.local:8000",
+			"type": "string"
+		}
+	]
+}
