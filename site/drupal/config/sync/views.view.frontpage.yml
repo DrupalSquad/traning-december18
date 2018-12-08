@@ -7,6 +7,8 @@ dependencies:
     - core.entity_view_mode.node.teaser
   module:
     - node
+    - rest
+    - serialization
     - user
 _core:
   default_config_hash: ezK5Dw8P_4bqJdDQIiecSAJak9p1Wf1yDwHzTutGFuQ
@@ -302,4 +304,20 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       max-age: -1
+      tags: {  }
+  rest_export_1:
+    display_plugin: rest_export
+    id: rest_export_1
+    display_title: 'REST export'
+    position: 3
+    display_options:
+      display_extenders: {  }
+      path: node
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - request_format
+        - 'user.node_grants:view'
+        - user.permissions
       tags: {  }
