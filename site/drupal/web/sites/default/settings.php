@@ -781,3 +781,4 @@ $databases['default']['default'] = array (
 );
 
 $config_directories['sync'] = '../config/sync';
+$settings['install_profile'] = 'standard';
