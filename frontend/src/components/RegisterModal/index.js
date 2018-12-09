@@ -38,7 +38,7 @@ class RegisterModal extends React.Component {
 
     ApiService.userRegister(data)
       .then(response => {
-        
+
       })
       .catch(error => {
         this.setState(

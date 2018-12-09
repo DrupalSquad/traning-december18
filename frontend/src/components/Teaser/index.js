@@ -8,6 +8,8 @@ class Teaser extends React.Component {
   render = () => {
     const { node } = this.props
 
+    console.log(node)
+
     const teaser = {
       uri: `node/${get(first(node.nid), 'value')}`,
       title: get(first(node.title), 'value'),

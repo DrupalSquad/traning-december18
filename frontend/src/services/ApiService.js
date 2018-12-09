@@ -8,13 +8,16 @@ class ApiService {
     this.baseURL = get(process.env, 'API_BASE_URL', 'http://drupal8.docker.local:8000')
 
     this.axios = axios.create({
-      baseURL: this.baseURL,
-      withCredentials: true
+      baseURL: this.baseURL
     })
   }
 
   getNodes = () => {
     return this.axios.get('node?_format=json')
+  }
+
+  getNode = (nid) => {
+    return this.axios.get(`node/${nid}?_format=json`)
   }
 
   getLoginStatus = () => {
