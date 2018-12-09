@@ -33,3 +33,7 @@
 * Start the development server and view it in the browser.
 * Create something special with React and Drupal's REST
 * Enjoy! :)
+
+Add this line to the `.bash_profile`:
+
+`alias docker-node="docker run --rm -w=/usr/src/app -v ${PWD}:/usr/src/app:cached -p 3000:3000 node:10-alpine <command>"`
