@@ -31,3 +31,5 @@
 * Download and install `node.js` or use docker container `node:10-alpine` for local environment.
 * Create a new Project using [facebook/create-react-app](https://github.com/facebook/create-react-app).
 * Start the development server and view it in the browser.
+* Create something special with React and Drupal's REST
+* Enjoy! :)
